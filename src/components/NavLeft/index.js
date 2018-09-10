@@ -6,7 +6,7 @@ export default class NavLeft extends React.Component{
         // }
         return(
             <div>
-                this is navlsft
+                this is navlsft soft1
             </div>
         )
     }
