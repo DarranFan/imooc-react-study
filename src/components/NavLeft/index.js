@@ -3,7 +3,7 @@ import { Button } from "antd";
 import MenuConfig from "../../config/menuconfig";
 import './index.less'
 import { Menu, Icon } from "antd";
-import MenuItem from "antd/lib/menu/MenuItem";
+// import MenuItem from "antd/lib/menu/MenuItem";
 const SubMenu = Menu.SubMenu;
 export default class NavLeft extends React.Component {
     componentWillMount(){
