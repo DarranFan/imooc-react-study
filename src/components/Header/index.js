@@ -15,6 +15,7 @@ export default class Header extends React.Component{
                         <span>欢迎,{this.state.userName}</span>
                         <a href="#">退出</a>
                     </Col>
+                    <Col></Col>
                 </Row>
                 <Row></Row>
             </div>
