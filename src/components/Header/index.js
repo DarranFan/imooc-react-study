@@ -1,23 +1,55 @@
-import React from 'react';
-import { Row, Col } from 'antd';
-
+import React from 'react'
+import { Row, Col } from 'antd'
+import './index.less'
+import Utils from '../../utils/utils'
+import axios from '../../axios'
 export default class Header extends React.Component{
     componentWillMount(){
-        this.state = {
+        this.setState({
             userName:'青青河畔'
-        }
+        })
+        setInterval(()=>{
+            let systime = Utils.formaDate(new Date().getTime()) 
+            this.setState({
+                systime
+            })
+        },1000)
+        this.getWeatherApiData()
+    }
+    getWeatherApiData(){
+        let city = '北京'
+        axios.jsonp({
+            url:'http://api.map.baidu.com/telematics/v3/weather?location='+encodeURIComponent(city)+'&output=json&ak=3p49MVra6urFRGOT9s8UBWr2'
+        }).then(res=>{
+            let data = res.results[0].weather_data[0];
+            this.setState({
+                dayPictureUrl:data.dayPictureUrl,
+                weather:data.weather
+            })
+        })
     }
     render(){
         return(
-            <div>
-                <Row>
+            <div className="header">
+                <Row className="header-top">
                     <Col span="24">
                         <span>欢迎,{this.state.userName}</span>
                         <a href="#">退出</a>
                     </Col>
                     <Col></Col>
                 </Row>
-                <Row></Row>
+                <Row className="breadcrumb">
+                    <Col span={4} className="breadcrum-title">
+                         首页
+                    </Col>
+                    <Col span="20" className="weather">
+                        <span className="date">{this.state.systime}</span>
+                        <span className="weather-img">
+                            <img src={this.state.dayPictureUrl} alt=''/>
+                        </span>
+                        <span className="weather-detail">{this.state.weather}</span>
+                    </Col>
+                </Row>
             </div>
         )
     }
