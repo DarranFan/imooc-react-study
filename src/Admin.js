@@ -16,8 +16,8 @@ export default class Admin extends React.Component{
                     <Header />
                     <Row className="content">
                         {/* 这里相当于vue中的router-view */}
-                        {/* {this.props.children} */}
-                        <Home></Home>
+                        {this.props.children}
+                        {/* <Home></Home> */}
                     </Row>
                     <Footer />
                 </Col>
